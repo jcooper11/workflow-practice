@@ -57,7 +57,7 @@ header {
   border: 3px solid #999;
   transition: background-color 0.3s, border-color 0.3s;
   z-index: 2;
-  margin-left: 5px;
+  margin-left: -15px;
 }
 
 /* Completed step */
