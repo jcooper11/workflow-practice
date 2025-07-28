@@ -27,7 +27,7 @@ main {
   align-items: center;
 }
 
-/* Roadmap container */
+/* Roadmap container with grid layout */
 #roadmap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -38,6 +38,7 @@ main {
   align-items: center;
 }
 
+/* Task names in first row */
 .task-name {
   color: white;
   font-weight: bold;
@@ -45,6 +46,7 @@ main {
   grid-row: 1;
 }
 
+/* SVG zigzag line in second row spanning all columns */
 #zigzag-line {
   grid-column: 1 / 4;
   grid-row: 2;
@@ -54,6 +56,7 @@ main {
   justify-self: center;
 }
 
+/* Circles styling */
 .step-circle {
   fill: #ccc;
   stroke: #999;
