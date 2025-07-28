@@ -1,44 +1,34 @@
 function updateRoadmap() {
-  const selects = document.querySelectorAll("select");
-  const circles = document.querySelectorAll(".step-circle");
-  const highlightLine = document.getElementById("highlight-line");
-
-  // Reset all circles
-  circles.forEach(circle => circle.classList.remove("completed"));
-
-  let completedCount = 0;
-
-  // Disable/enable selects based on previous completion
-  selects.forEach((select, index) => {
-    if (index === 0) {
-      // Always enable first task
-      select.disabled = false;
-    } else {
-      // Enable current select only if previous task is completed
-      select.disabled = selects[index - 1].value !== "Completed";
-    }
-
-    // Count completed tasks and mark circles
-    if (select.value === "Completed") {
-      completedCount++;
-      circles[index].classList.add("completed");
-    }
-  });
-
-  // Update the highlighted part of the zigzag line
-  const points = [
-    [100, 20],
-    [300, 80],
-    [500, 20]
+  const selects = [
+    document.getElementById('select-1'),
+    document.getElementById('select-2'),
+    document.getElementById('select-3')
   ];
 
-  if (completedCount === 0) {
-    highlightLine.setAttribute("points", "");
-  } else {
-    let highlightPoints = points.slice(0, completedCount).map(p => p.join(",")).join(" ");
-    highlightLine.setAttribute("points", highlightPoints);
+  const circles = [
+    document.getElementById('circle-1'),
+    document.getElementById('circle-2'),
+    document.getElementById('circle-3')
+  ];
+
+  // Enforce task order: disable selects beyond incomplete
+  for(let i = 0; i < selects.length; i++) {
+    if(i === 0) {
+      selects[i].disabled = false;
+    } else {
+      selects[i].disabled = selects[i-1].value !== "Completed";
+    }
+  }
+
+  // Update circles based on completion
+  for(let i = 0; i < circles.length; i++) {
+    if(selects[i].value === "Completed") {
+      circles[i].classList.add('completed');
+    } else {
+      circles[i].classList.remove('completed');
+    }
   }
 }
 
-// Initialize on page load
+// Initialize on load
 window.onload = updateRoadmap;
