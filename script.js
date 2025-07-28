@@ -6,19 +6,26 @@ function updateRoadmap() {
   // Reset all circles
   circles.forEach(circle => circle.classList.remove("completed"));
 
-  // Count completed tasks
   let completedCount = 0;
-  selects.forEach(select => {
-    if (select.value === "Completed") completedCount++;
+
+  // Disable/enable selects based on previous completion
+  selects.forEach((select, index) => {
+    if (index === 0) {
+      // Always enable first task
+      select.disabled = false;
+    } else {
+      // Enable current select only if previous task is completed
+      select.disabled = selects[index - 1].value !== "Completed";
+    }
+
+    // Count completed tasks
+    if (select.value === "Completed") {
+      completedCount++;
+      circles[index].classList.add("completed");
+    }
   });
 
-  // Mark completed circles
-  for (let i = 0; i < completedCount && i < circles.length; i++) {
-    circles[i].classList.add("completed");
-  }
-
   // Update the highlighted part of the zigzag line
-  // Points for the zigzag polyline in the SVG:
   const points = [
     [30, 20],
     [110, 60],
@@ -28,12 +35,13 @@ function updateRoadmap() {
     [430, 60]
   ];
 
-  // Calculate points for highlight line based on completed tasks
   if (completedCount === 0) {
     highlightLine.setAttribute("points", "");
   } else {
-    // The highlight line will connect all completed points in sequence
     let highlightPoints = points.slice(0, completedCount).map(p => p.join(",")).join(" ");
     highlightLine.setAttribute("points", highlightPoints);
   }
 }
+
+// Initialize on page load
+window.onload = updateRoadmap;
