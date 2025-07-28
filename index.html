@@ -3,18 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Business Workflow Tracker</title>
+  <title>Business Workflow Tracker - Zigzag Roadmap</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Business Workflow Tracker</h1>
     <div id="roadmap">
-      <div class="road-step" id="step-1">Task 1</div>
-      <div class="road-line"></div>
-      <div class="road-step" id="step-2">Task 2</div>
-      <div class="road-line"></div>
-      <div class="road-step" id="step-3">Task 3</div>
+      <div class="task-name">Market Research</div>
+      <div class="task-name">Budget Planning</div>
+      <div class="task-name">Marketing Strategy</div>
+
+      <svg id="zigzag-line" width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg" >
+        <polyline points="30,20 110,60 190,20 270,60 350,20 430,60" stroke="#ccc" stroke-width="4" fill="none"/>
+        <!-- Highlight line -->
+        <polyline id="highlight-line" points="30,20" stroke="limegreen" stroke-width="6" fill="none"/>
+        <!-- Circles -->
+        <circle class="step-circle" cx="30" cy="20" r="12" />
+        <circle class="step-circle" cx="110" cy="60" r="12" />
+        <circle class="step-circle" cx="190" cy="20" r="12" />
+        <circle class="step-circle" cx="270" cy="60" r="12" />
+        <circle class="step-circle" cx="350" cy="20" r="12" />
+        <circle class="step-circle" cx="430" cy="60" r="12" />
+      </svg>
     </div>
   </header>
 
@@ -32,16 +43,16 @@
       </div>
 
       <div class="task">
-        <span>Task 2: Marketing Strategy</span>
+        <span>Task 2: Budget Planning</span>
         <select onchange="updateRoadmap()">
           <option>Not Started</option>
           <option>In Progress</option>
           <option>Completed</option>
         </select>
       </div>
-      
+
       <div class="task">
-        <span>Task 3: Budget Planning</span>
+        <span>Task 3: Marketing Strategy</span>
         <select onchange="updateRoadmap()">
           <option>Not Started</option>
           <option>In Progress</option>
