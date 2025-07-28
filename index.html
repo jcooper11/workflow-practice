@@ -8,29 +8,36 @@
 </head>
 <body>
   <header>
-    <h1>Business Workflow Tracker - Group 1</h1>
-    <div id="timeline"></div>
+    <h1>Business Workflow Tracker</h1>
+    <div id="roadmap">
+      <div class="road-step" id="step-1">Task 1</div>
+      <div class="road-line"></div>
+      <div class="road-step" id="step-2">Task 2</div>
+    </div>
   </header>
 
   <main>
     <section>
       <h2>Tasks</h2>
+
       <div class="task">
         <span>Task 1: Market Research</span>
-        <select onchange="updateTimeline()">
+        <select onchange="updateRoadmap()">
           <option>Not Started</option>
           <option>In Progress</option>
           <option>Completed</option>
         </select>
       </div>
+
       <div class="task">
         <span>Task 2: Budget Planning</span>
-        <select onchange="updateTimeline()">
+        <select onchange="updateRoadmap()">
           <option>Not Started</option>
           <option>In Progress</option>
           <option>Completed</option>
         </select>
       </div>
+
     </section>
   </main>
 
