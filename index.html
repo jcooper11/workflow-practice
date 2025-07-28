@@ -2,69 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Business Workflow Tracker - Zigzag Roadmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Business Workflow</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Business Workflow Tracker</h1>
-    <div id="roadmap">
-      <!-- Task names -->
-      <div class="task-name">Market Research</div>
-      <div class="task-name">Budget Planning</div>
-      <div class="task-name">Marketing Strategy</div>
-
-      <!-- Circles + lines -->
-      <div class="step-container">
-        <div class="circle completed" id="circle-1"></div>
-        <div class="line"></div>
-      </div>
-      <div class="step-container">
-        <div class="circle" id="circle-2"></div>
-        <div class="line"></div>
-      </div>
-      <div class="step-container">
-        <div class="circle" id="circle-3"></div>
-        <!-- No line after last circle -->
-      </div>
-    </div>
   </header>
 
+  <div id="roadmap">
+    <div class="roadmap-column">
+      <div class="task-name">Market Research</div>
+      <div class="circle" id="circle-1"></div>
+    </div>
+    <div class="connector-line"></div>
+    <div class="roadmap-column">
+      <div class="task-name">Budget Planning</div>
+      <div class="circle" id="circle-2"></div>
+    </div>
+    <div class="connector-line"></div>
+    <div class="roadmap-column">
+      <div class="task-name">Marketing Strategy</div>
+      <div class="circle" id="circle-3"></div>
+    </div>
+  </div>
+
   <main>
-    <section>
-      <h2>Tasks</h2>
-
-      <div class="task">
-        <span>Task 1: Market Research</span>
-        <select onchange="updateRoadmap()" id="select-1">
-          <option>Not Started</option>
-          <option>In Progress</option>
-          <option selected>Completed</option>
-        </select>
-      </div>
-
-      <div class="task">
-        <span>Task 2: Budget Planning</span>
-        <select onchange="updateRoadmap()" id="select-2">
-          <option>Not Started</option>
-          <option>In Progress</option>
-          <option>Completed</option>
-        </select>
-      </div>
-
-      <div class="task">
-        <span>Task 3: Marketing Strategy</span>
-        <select onchange="updateRoadmap()" id="select-3">
-          <option>Not Started</option>
-          <option>In Progress</option>
-          <option>Completed</option>
-        </select>
-      </div>
-
-    </section>
+    <div class="task">
+      <label>Market Research:</label>
+      <select id="task1" onchange="updateProgress()">
+        <option value="not-started">Not Started</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+    <div class="task">
+      <label>Budget Planning:</label>
+      <select id="task2" onchange="updateProgress()" disabled>
+        <option value="not-started">Not Started</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+    <div class="task">
+      <label>Marketing Strategy:</label>
+      <select id="task3" onchange="updateProgress()" disabled>
+        <option value="not-started">Not Started</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    function updateProgress() {
+      const task1 = document.getElementById('task1').value;
+      const task2 = document.getElementById('task2');
+      const task3 = document.getElementById('task3');
+
+      if (task1 === 'completed') {
+        document.getElementById('circle-1').classList.add('completed');
+        task2.disabled = false;
+      } else {
+        document.getElementById('circle-1').classList.remove('completed');
+        task2.disabled = true;
+        task2.value = 'not-started';
+        document.getElementById('circle-2').classList.remove('completed');
+        task3.disabled = true;
+        task3.value = 'not-started';
+        document.getElementById('circle-3').classList.remove('completed');
+        return;
+      }
+
+      if (task2.value === 'completed') {
+        document.getElementById('circle-2').classList.add('completed');
+        task3.disabled = false;
+      } else {
+        document.getElementById('circle-2').classList.remove('completed');
+        task3.disabled = true;
+        task3.value = 'not-started';
+        document.getElementById('circle-3').classList.remove('completed');
+        return;
+      }
+
+      if (task3.value === 'completed') {
+        document.getElementById('circle-3').classList.add('completed');
+      } else {
+        document.getElementById('circle-3').classList.remove('completed');
+      }
+    }
+  </script>
 </body>
 </html>
