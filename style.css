@@ -50,10 +50,11 @@ header {
 }
 
 .connector-line {
+  align-self: center;
   width: 40px;
   height: 4px;
   background-color: #ccc;
-  margin-top: 28px; /* aligns with circles */
+  margin-top: 34px; /* adjust this if needed */
   border-radius: 2px;
 }
 
