@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Business Workflow Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Business Workflow Tracker</h1>
+    <div id="timeline"></div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Tasks</h2>
+      <div class="task">
+        <span>Task 1: Market Research</span>
+        <select onchange="updateTimeline()">
+          <option>Not Started</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+      </div>
+      <div class="task">
+        <span>Task 2: Budget Planning</span>
+        <select onchange="updateTimeline()">
+          <option>Not Started</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
