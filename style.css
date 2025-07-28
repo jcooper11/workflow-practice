@@ -61,7 +61,7 @@ header {
 
 /* Move left and middle circles 160px right */
 #circle-1, #circle-2 {
-  transform: translateX(160px);
+  transform: translateX(260px);
 }
 
 /* Move right circle 45px left */
