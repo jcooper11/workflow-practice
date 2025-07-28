@@ -1,20 +1,11 @@
-function updateTimeline() {
+function updateRoadmap() {
   const selects = document.querySelectorAll("select");
-  let completed = 0;
-
-  selects.forEach(select => {
+  selects.forEach((select, index) => {
+    const step = document.getElementById(`step-${index + 1}`);
     if (select.value === "Completed") {
-      completed++;
+      step.classList.add("completed");
+    } else {
+      step.classList.remove("completed");
     }
   });
-
-  const timeline = document.getElementById("timeline");
-  const percent = Math.round((completed / selects.length) * 100);
-
-  timeline.innerHTML = `
-    <div style="background: #ccc; height: 20px; border-radius: 10px;">
-      <div style="width: ${percent}%; background: limegreen; height: 20px; border-radius: 10px;"></div>
-    </div>
-    <p>${percent}% of tasks completed</p>
-  `;
 }
