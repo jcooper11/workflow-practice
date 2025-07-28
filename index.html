@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Business Workflow Tracker - Zigzag Roadmap</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,19 +10,24 @@
   <header>
     <h1>Business Workflow Tracker</h1>
     <div id="roadmap">
-      <!-- Task names row -->
+      <!-- Task names -->
       <div class="task-name">Market Research</div>
       <div class="task-name">Budget Planning</div>
       <div class="task-name">Marketing Strategy</div>
 
-      <!-- Zig-zag row -->
-      <svg id="zigzag-line" width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="100,20 300,80 500,20" stroke="#ccc" stroke-width="4" fill="none"/>
-        <polyline id="highlight-line" points="100,20" stroke="limegreen" stroke-width="6" fill="none"/>
-        <circle class="step-circle" cx="100" cy="20" r="12" />
-        <circle class="step-circle" cx="300" cy="80" r="12" />
-        <circle class="step-circle" cx="500" cy="20" r="12" />
-      </svg>
+      <!-- Circles + lines -->
+      <div class="step-container">
+        <div class="circle completed" id="circle-1"></div>
+        <div class="line"></div>
+      </div>
+      <div class="step-container">
+        <div class="circle" id="circle-2"></div>
+        <div class="line"></div>
+      </div>
+      <div class="step-container">
+        <div class="circle" id="circle-3"></div>
+        <!-- No line after last circle -->
+      </div>
     </div>
   </header>
 
@@ -32,16 +37,16 @@
 
       <div class="task">
         <span>Task 1: Market Research</span>
-        <select onchange="updateRoadmap()">
+        <select onchange="updateRoadmap()" id="select-1">
           <option>Not Started</option>
           <option>In Progress</option>
-          <option>Completed</option>
+          <option selected>Completed</option>
         </select>
       </div>
 
       <div class="task">
         <span>Task 2: Budget Planning</span>
-        <select onchange="updateRoadmap()">
+        <select onchange="updateRoadmap()" id="select-2">
           <option>Not Started</option>
           <option>In Progress</option>
           <option>Completed</option>
@@ -50,7 +55,7 @@
 
       <div class="task">
         <span>Task 3: Marketing Strategy</span>
-        <select onchange="updateRoadmap()">
+        <select onchange="updateRoadmap()" id="select-3">
           <option>Not Started</option>
           <option>In Progress</option>
           <option>Completed</option>
@@ -63,4 +68,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
