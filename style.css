@@ -72,3 +72,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
+.roadmap-column, .connector-line {
+  outline: 1px dashed red;
+}
