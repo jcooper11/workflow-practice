@@ -22,7 +22,7 @@
     #roadmap {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 20px;
       margin: 40px auto;
       width: 90%;
@@ -34,12 +34,20 @@
       align-items: center;
       width: 150px;
       text-align: center;
+      cursor: pointer;
+      user-select: none;
     }
 
     .task-name {
       font-weight: bold;
       margin-bottom: 10px;
       font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .roadmap-column:hover .task-name {
+      color: maroon;
+      text-decoration: underline;
     }
 
     .circle {
@@ -57,7 +65,7 @@
     }
 
     .connector-line {
-      width: 80px;
+      width: 40px;
       height: 4px;
       background-color: #ccc;
       margin-top: 34px;
@@ -66,6 +74,22 @@
     }
     .connector-line.completed {
       background-color: limegreen;
+    }
+
+    /* Dropdown content below each roadmap column */
+    .task-details {
+      max-width: 150px;
+      margin-top: 8px;
+      text-align: left;
+      font-size: 0.9rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: none; /* hidden by default */
+      position: relative;
+      z-index: 10;
     }
 
     main {
@@ -95,19 +119,47 @@
   </h2>
 
   <div id="roadmap">
-    <div class="roadmap-column">
+    <div class="roadmap-column" onclick="toggleDetails(1)">
       <div class="task-name">Market Research</div>
       <div class="circle" id="circle-1"></div>
+      <div class="task-details" id="details-1">
+        <p><strong>Links & Resources:</strong></p>
+        <ul>
+          <li><a href="https://www.example.com/market-research-guide" target="_blank" rel="noopener">Research Guide</a></li>
+          <li><a href="https://www.example.com/competitor-analysis" target="_blank" rel="noopener">Competitor Analysis</a></li>
+          <li>Notes: Gather customer data and trends.</li>
+        </ul>
+      </div>
     </div>
+
     <div class="connector-line" id="line-1"></div>
-    <div class="roadmap-column">
+
+    <div class="roadmap-column" onclick="toggleDetails(2)">
       <div class="task-name">Budget Planning</div>
       <div class="circle" id="circle-2"></div>
+      <div class="task-details" id="details-2">
+        <p><strong>Links & Resources:</strong></p>
+        <ul>
+          <li><a href="https://www.example.com/budget-templates" target="_blank" rel="noopener">Budget Templates</a></li>
+          <li><a href="https://www.example.com/financial-planning" target="_blank" rel="noopener">Financial Planning Tips</a></li>
+          <li>Notes: Estimate costs and set limits.</li>
+        </ul>
+      </div>
     </div>
+
     <div class="connector-line" id="line-2"></div>
-    <div class="roadmap-column">
+
+    <div class="roadmap-column" onclick="toggleDetails(3)">
       <div class="task-name">Marketing Strategy</div>
       <div class="circle" id="circle-3"></div>
+      <div class="task-details" id="details-3">
+        <p><strong>Links & Resources:</strong></p>
+        <ul>
+          <li><a href="https://www.example.com/marketing-plans" target="_blank" rel="noopener">Marketing Plans</a></li>
+          <li><a href="https://www.example.com/social-media-strategy" target="_blank" rel="noopener">Social Media Strategy</a></li>
+          <li>Notes: Define target audience and messaging.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -180,6 +232,16 @@
         document.getElementById('circle-3').classList.remove('completed');
       }
     }
+
+    function toggleDetails(taskNumber) {
+      const details = document.getElementById(`details-${taskNumber}`);
+      if (details.style.display === 'block') {
+        details.style.display = 'none';
+      } else {
+        details.style.display = 'block';
+      }
+    }
   </script>
+
 </body>
 </html>
