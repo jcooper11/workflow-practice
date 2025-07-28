@@ -42,12 +42,6 @@ header {
   position: relative;
 }
 
-/* Zig-zag effect: move every 2nd step down */
-.step-container:nth-child(4), /* 1st circle container */
-.step-container:nth-child(6)  /* 3rd circle container */ {
-  transform: translateY(15px);
-}
-
 /* Circle styles */
 .circle {
   width: 24px;
@@ -59,14 +53,17 @@ header {
   z-index: 2;
 }
 
-/* Move left and middle circles 160px right */
-#circle-1, #circle-2 {
-  transform: translateX(260px);
+/* Custom circle positions */
+#circle-1 {
+  transform: translateX(160px) translateY(15px);
 }
 
-/* Move right circle 45px left */
+#circle-2 {
+  transform: translateX(160px);
+}
+
 #circle-3 {
-  transform: translateX(-45px);
+  transform: translateX(-45px) translateY(15px);
 }
 
 /* Completed step */
