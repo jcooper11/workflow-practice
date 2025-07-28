@@ -18,7 +18,7 @@ function updateRoadmap() {
       select.disabled = selects[index - 1].value !== "Completed";
     }
 
-    // Count completed tasks
+    // Count completed tasks and mark circles
     if (select.value === "Completed") {
       completedCount++;
       circles[index].classList.add("completed");
@@ -27,12 +27,9 @@ function updateRoadmap() {
 
   // Update the highlighted part of the zigzag line
   const points = [
-    [30, 20],
-    [110, 60],
-    [190, 20],
-    [270, 60],
-    [350, 20],
-    [430, 60]
+    [100, 20],
+    [300, 80],
+    [500, 20]
   ];
 
   if (completedCount === 0) {
