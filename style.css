@@ -57,7 +57,7 @@ header {
   border: 3px solid #999;
   transition: background-color 0.3s, border-color 0.3s;
   z-index: 2;
-  margin-left: 160px;
+  margin-left: 320px;
 }
 
 /* Completed step */
@@ -102,5 +102,5 @@ main {
   align-items: center;
 }
 #circle-3 {
-  transform: translate(-20, 0px); 
+  transform: translate(-40, 0px); 
 }
