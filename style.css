@@ -26,3 +26,31 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
+/* Roadmap styles */
+#roadmap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  flex-wrap: wrap;
+}
+
+.road-step {
+  background-color: gray;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.road-step.completed {
+  background-color: limegreen;
+}
+
+.road-line {
+  width: 40px;
+  height: 4px;
+  background-color: white;
+}
