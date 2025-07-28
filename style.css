@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background-color: maroon;
+  background-color: maroon; /* changed from #003366 */
   color: white;
   padding: 1em;
   text-align: center;
