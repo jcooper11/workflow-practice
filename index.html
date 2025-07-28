@@ -57,11 +57,15 @@
     }
 
     .connector-line {
-      width: 40px;
+      width: 80px;
       height: 4px;
       background-color: #ccc;
       margin-top: 34px;
       border-radius: 2px;
+      transition: background-color 0.3s;
+    }
+    .connector-line.completed {
+      background-color: green;
     }
 
     main {
@@ -95,12 +99,12 @@
       <div class="task-name">Market Research</div>
       <div class="circle" id="circle-1"></div>
     </div>
-    <div class="connector-line"></div>
+    <div class="connector-line" id="line-1"></div>
     <div class="roadmap-column">
       <div class="task-name">Budget Planning</div>
       <div class="circle" id="circle-2"></div>
     </div>
-    <div class="connector-line"></div>
+    <div class="connector-line" id="line-2"></div>
     <div class="roadmap-column">
       <div class="task-name">Marketing Strategy</div>
       <div class="circle" id="circle-3"></div>
@@ -142,12 +146,15 @@
 
       if (task1 === 'completed') {
         document.getElementById('circle-1').classList.add('completed');
+        document.getElementById('line-1').classList.add('completed');
         task2.disabled = false;
       } else {
         document.getElementById('circle-1').classList.remove('completed');
+        document.getElementById('line-1').classList.remove('completed');
         task2.disabled = true;
         task2.value = 'not-started';
         document.getElementById('circle-2').classList.remove('completed');
+        document.getElementById('line-2').classList.remove('completed');
         task3.disabled = true;
         task3.value = 'not-started';
         document.getElementById('circle-3').classList.remove('completed');
@@ -156,9 +163,11 @@
 
       if (task2.value === 'completed') {
         document.getElementById('circle-2').classList.add('completed');
+        document.getElementById('line-2').classList.add('completed');
         task3.disabled = false;
       } else {
         document.getElementById('circle-2').classList.remove('completed');
+        document.getElementById('line-2').classList.remove('completed');
         task3.disabled = true;
         task3.value = 'not-started';
         document.getElementById('circle-3').classList.remove('completed');
